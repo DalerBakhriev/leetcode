@@ -1,7 +1,6 @@
 package addtwonumbers
 
 import (
-	"fmt"
 	"math/big"
 	"strconv"
 	"strings"
@@ -26,9 +25,10 @@ func convertLinkedListToInt(node *ListNode) *big.Int {
 	numAsString := strings.Join(numAsStringSlice, "")
 	revertedNumAsString := reverse(numAsString)
 
-	resultNum, _ := strconv.Atoi(revertedNumAsString)
+	resultNum := new(big.Int)
+	resultNum.SetString(revertedNumAsString, 10)
 
-	return big.NewInt(int64(resultNum))
+	return resultNum
 }
 
 func reverse(stringToReverse string) string {
@@ -73,9 +73,6 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 	resultAsBigInt := new(big.Int)
 	resultAsBigInt.Add(listOneAsNum, listTwoAsNum)
-	fmt.Printf("First list as number %d\n", listOneAsNum)
-	fmt.Printf("Second list as number %d\n", listTwoAsNum)
-	fmt.Printf("Result as number %v\n", resultAsBigInt)
 
 	return convertStringToLinkedList(resultAsBigInt.String())
 }
