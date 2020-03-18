@@ -30,9 +30,11 @@ func TestIsPalindrome(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		result := palindrome.IsPalindrome(testCase.testNumber)
-		if result != testCase.expectedResult {
-			t.Errorf("Expected %v, got %v", testCase.expectedResult, result)
-		}
+		t.Run(testCase.name, func(t *testing.T) {
+			result := palindrome.IsPalindrome(testCase.testNumber)
+			if result != testCase.expectedResult {
+				t.Errorf("Expected %v, got %v", testCase.expectedResult, result)
+			}
+		})
 	}
 }

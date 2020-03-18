@@ -25,14 +25,16 @@ func TestReverse(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		result := reverseinteger.Reverse(testCase.numberToRevert)
-		if result != testCase.expectedResult {
-			t.Errorf(
-				"Failed test case: '%s', expected %d, got %d",
-				testCase.name,
-				testCase.expectedResult,
-				result,
-			)
-		}
+		t.Run(testCase.name, func(t *testing.T) {
+			result := reverseinteger.Reverse(testCase.numberToRevert)
+			if result != testCase.expectedResult {
+				t.Errorf(
+					"Failed test case: '%s', expected %d, got %d",
+					testCase.name,
+					testCase.expectedResult,
+					result,
+				)
+			}
+		})
 	}
 }

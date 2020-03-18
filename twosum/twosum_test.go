@@ -31,29 +31,33 @@ var testCases []TwoSumTestCase = []TwoSumTestCase{
 func TestBruteForce(t *testing.T) {
 
 	for _, testCase := range testCases {
-		result := twosum.BruteForce(testCase.nums, testCase.target)
-		if !reflect.DeepEqual(result, testCase.expectedResult) {
-			t.Errorf(
-				"Failed test '%s'. expected %v, got %v",
-				testCase.name,
-				testCase.expectedResult,
-				result,
-			)
-		}
+		t.Run(testCase.name, func(t *testing.T) {
+			result := twosum.BruteForce(testCase.nums, testCase.target)
+			if !reflect.DeepEqual(result, testCase.expectedResult) {
+				t.Errorf(
+					"Failed test '%s'. expected %v, got %v",
+					testCase.name,
+					testCase.expectedResult,
+					result,
+				)
+			}
+		})
 	}
 }
 
 func TestFasterWithMap(t *testing.T) {
 
 	for _, testCase := range testCases {
-		result := twosum.FasterWithMap(testCase.nums, testCase.target)
-		if !reflect.DeepEqual(result, testCase.expectedResult) {
-			t.Errorf(
-				"Failed test '%s'. expected %v, got %v",
-				testCase.name,
-				testCase.expectedResult,
-				result,
-			)
-		}
+		t.Run(testCase.name, func(t *testing.T) {
+			result := twosum.FasterWithMap(testCase.nums, testCase.target)
+			if !reflect.DeepEqual(result, testCase.expectedResult) {
+				t.Errorf(
+					"Failed test '%s'. expected %v, got %v",
+					testCase.name,
+					testCase.expectedResult,
+					result,
+				)
+			}
+		})
 	}
 }
