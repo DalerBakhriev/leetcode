@@ -73,7 +73,6 @@ func Exist(board [][]byte, word string) bool {
 		usedIndices := make(map[[2]int]int)
 		usedIndices[[2]int{vertIndex, horIndex}] = 1
 		backTrack(&results, word, string(word[0]), board, vertIndex, horIndex, 1, usedIndices)
-
 	}
 
 	return len(results) > 0
